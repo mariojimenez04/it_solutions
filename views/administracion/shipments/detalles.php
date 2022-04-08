@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-end mt-5">
     <div>
-        <form class="d-flex" action="" method="POST">
+        <form action="/admin/shipments/search/id" class="d-flex" method="POST">
 
             <a href="/admin/shipments/create-laptop?id=<?php echo s($_GET['id']);  ?>" class="btn btn-success mx-3">Crear nuevo registro</a>
 
-            <input type="search" name="search" id="search" class="form-contol" aria-label="search">
+            <input type="search" name="numero_serie" id="numero_serie" class="form-contol" aria-label="search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
 
         </form>

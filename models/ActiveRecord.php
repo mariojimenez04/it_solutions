@@ -130,6 +130,12 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    public static function search($columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE $columna LIKE '%" . $valor . "%' LIMIT 1 ";
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
+    }
+
     public static function consulta($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE $columna = '${valor}'";
 

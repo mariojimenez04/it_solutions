@@ -2,12 +2,11 @@
 
     require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\AdministracionController;
-use Controllers\ProductController;
-use Controllers\ShipmentsController;
-use Controllers\UsuarioController;
-use Model\Usuario;
-use MVC\Router;
+    use Controllers\AdministracionController;
+    use Controllers\ProductController;
+    use Controllers\ShipmentsController;
+    use Controllers\UsuarioController;
+    use MVC\Router;
 
     $router = new Router();
 
@@ -58,6 +57,7 @@ use MVC\Router;
 
     //Buscadores - Shipments
     $router->get('/admin/shipments/search/id', [ShipmentsController::class, 'search']);
+    $router->post('/admin/shipments/search/id', [ShipmentsController::class, 'search']);
     
     //Products
     $router->get('/admin/product/index', [ProductController::class, 'index']);
