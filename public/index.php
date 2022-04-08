@@ -58,6 +58,7 @@ use MVC\Router;
 
     //Buscadores - Shipments
     $router->get('/admin/shipments/search/id', [ShipmentsController::class, 'search']);
+    $router->post('/admin/shipments/search/id', [ShipmentsController::class, 'search']);
     
     //Products
     $router->get('/admin/product/index', [ProductController::class, 'index']);

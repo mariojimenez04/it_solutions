@@ -19,19 +19,6 @@
             ]);
         }
 
-        public static function newEmbarque(Router $router){
-
-
-            $router->render('');
-        }
-
-        public static function embarque(Router $router) {
-
-            $router->render('administracion/shipments/embarque',[
-                
-            ]);
-        }
-
         public static function createLaptop(Router $router) {
 
             $id = 'id';
@@ -95,12 +82,19 @@
 
         public static function update(Router $router) {
 
-            $router->render('administracion/shipments/update');
+            $router->render('administracion/shipments/update',[
+
+            ]);
         }
 
-        public static function search(Router $router) { 
+        public static function search(Router $router) {
+            $resultado = $_POST['numero_serie'];
 
-            $router->render('administracion/shipments/search');
+            $laptops = Laptop::search('numero_serie', $resultado);
+
+            $router->render('administracion/shipments/search',[
+                'laptops' => $laptops,
+            ]);
         }
 
         public static function detalles(Router $router) {

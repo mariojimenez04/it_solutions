@@ -1,0 +1,1 @@
+<h2 class="text-center">Resultado para - <?php echo s($laptops->numero_serie); ?></h2>

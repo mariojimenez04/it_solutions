@@ -137,6 +137,13 @@ class ActiveRecord {
         return $resultado;
     }
 
+    public static function search($columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE $columna LIKE %'${valor}'%";
+
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
+    }
+
     // crea un nuevo registro
     public function crear() {
         // Sanitizar los datos
