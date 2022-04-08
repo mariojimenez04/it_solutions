@@ -29,6 +29,7 @@
                             $_SESSION['id'] = $usuario->id;
                             $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
                             $_SESSION['email'] = $usuario->email;
+                            $_SESSION['admin'] = $usuario->admin;
                             $_SESSION['login'] = true;
 
                             header('Location: /admin/index');
