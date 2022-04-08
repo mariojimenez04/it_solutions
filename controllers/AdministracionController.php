@@ -2,13 +2,14 @@
 
     namespace Controllers;
 
+use Model\Embarque;
 use Model\Shipments;
 use MVC\Router;
 
     class AdministracionController {
 
         public static function index(Router $router) {
-            $embarques = Shipments::all();
+            $embarques = Embarque::all();
 
             $router->render('administracion/index', [
                 'embarques' => $embarques

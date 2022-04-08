@@ -2,12 +2,11 @@
 
     require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\AdministracionController;
-use Controllers\ProductController;
-use Controllers\ShipmentsController;
-use Controllers\UsuarioController;
-use Model\Usuario;
-use MVC\Router;
+    use Controllers\AdministracionController;
+    use Controllers\ProductController;
+    use Controllers\ShipmentsController;
+    use Controllers\UsuarioController;
+    use MVC\Router;
 
     $router = new Router();
 

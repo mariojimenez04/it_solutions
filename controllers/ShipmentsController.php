@@ -2,17 +2,17 @@
 
     namespace Controllers;
 
+    use Model\Embarque;
     use Model\Generacion;
     use Model\Laptop;
     use Model\Procesadores;
-    use Model\Shipments;
     use MVC\Router;
 
     class ShipmentsController {
 
         public static function index(Router $router) {
 
-            $embarques = Shipments::all();
+            $embarques = Embarque::all();
 
             $router->render('administracion/shipments/index',[
                 'embarques' => $embarques
@@ -56,12 +56,12 @@
         }
 
         public static function create(Router $router){
-            $embarque = new Shipments;
+            $embarque = new Embarque;
 
             $alertas = [];
 
             if($_SERVER['REQUEST_METHOD'] === 'POST'){
-                $embarque = new Shipments($_POST['embarque']);
+                $embarque = new Embarque($_POST['embarque']);
 
                 $alertas = $embarque->validar();
 
@@ -88,12 +88,12 @@
         }
 
         public static function search(Router $router) {
-            $resultado = $_POST['numero_serie'];
+            $result = $_POST['numero_serie'];
 
-            $laptops = Laptop::search('numero_serie', $resultado);
+            $laptop = Laptop::search('numero_serie', $result);
 
             $router->render('administracion/shipments/search',[
-                'laptops' => $laptops,
+                'laptop' => $laptop
             ]);
         }
 
@@ -103,7 +103,7 @@
 
             $id = redirecciona($id, 'id');
 
-            $embarques = Shipments::find($id);
+            $embarques = Embarque::find($id);
 
             $laptops = Laptop::consulta('tituloId', $id);
             

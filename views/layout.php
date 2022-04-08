@@ -37,7 +37,7 @@
                             <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/user/password/index">Actualizar contraseñas</a>
+                            <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
                         </li>
                         
                     </ul>
