@@ -3,7 +3,8 @@
         <form action="/admin/shipments/search/id" class="d-flex" method="POST">
 
             <a href="/admin/shipments/create-laptop?id=<?php echo s($_GET['id']);  ?>" class="btn btn-success mx-3">Crear nuevo registro</a>
-
+            
+            <input type="hidden" name="tituloId" value="<?php echo s($_GET['id']); ?>">
             <input type="search" name="numero_serie" id="numero_serie" class="form-contol" aria-label="search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
 
