@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-end mt-5">
+<div class="d-flex justify-content-between mt-5">
     <div>
         <form action="/admin/shipments/search/id" class="d-flex" method="POST">
 
@@ -8,7 +8,10 @@
             <input type="search" name="numero_serie" id="numero_serie" class="form-contol" aria-label="search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
 
-        </form>
+        </form>    
+    </div>
+    <div>
+        <a target="_blank" href="/archive-excel-download?id=<?php echo s($embarques->id); ?>" class="btn btn-success">Exportar a excel</a>
     </div>
 </div>
 
@@ -28,6 +31,9 @@
             <th scope="col">Status</th>
             <th scope="col">Observaciones</th>
             <th scope="col">Entregado</th>
+            <th scope="col">Registrado por</th>
+            <th scope="col">Registrado el</th>
+            <th scope="col">Accioness</th>
         </tr>
     </thead>
     <tbody>
@@ -56,6 +62,19 @@
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                             </svg>
                         </td>
+                <?php endif; ?>
+                <?php if($_SESSION['admin']): ?>
+                    <td><?php echo s($laptop->registrado_por) ?></td>
+                    <td><?php echo s($laptop->creado_el) ?></td>
+                    <td>
+                        <a class="w-100 btn btn-warning" href="/servicios/actualizar?id=<?php echo $laptop->id; ?>">Actualizar</a>
+
+                        <form action="/servicios/eliminar" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $laptop->id; ?>">
+
+                            <input type="submit" value="Borrar" class="mt-2 w-100 btn btn-danger">
+                        </form>
+                    </td>
                 <?php endif; ?>
             </tr>
         <?php endforeach; ?> 

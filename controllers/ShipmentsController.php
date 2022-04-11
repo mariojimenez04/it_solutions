@@ -90,8 +90,6 @@
         public static function search(Router $router) {
             $result = $_POST['numero_serie'];
 
-
-
             $laptops = Laptop::search('numero_serie', 'tituloId', $_POST['numero_serie'], $_POST['tituloId']);
             $router->render('administracion/shipments/search',[
                 'laptops' => $laptops,

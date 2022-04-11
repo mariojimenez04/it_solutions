@@ -48,6 +48,7 @@
         }
 
         public static function register(Router $router) {
+            admin();
             $notificacion = $_GET['notification'] ?? null;
 
             $usuario = new Usuario($_POST);
@@ -100,7 +101,7 @@
         }
 
         public static function passwordIndex(Router $router) {
-
+            admin();
             $usuarios = Usuario::all();
 
             $router->render('auth/password/index',[
@@ -109,7 +110,7 @@
         }
 
         public static function passwordEdit(Router $router) {
-
+            admin();
             $id = 'id' ?? null;
 
             $id = redirecciona($id, 'id', '/admin/index');
@@ -132,6 +133,7 @@
         }
 
         public static function confirm(Router $router) {
+            admin();
             $alertas = [];
 
             $token = s($_GET['token']);
@@ -147,7 +149,7 @@
                 #Mostrar mensaje de exito
                 
                 $usuario->confirmado = '1';
-                $usuario->token = null;
+                $usuario->token = '';
 
                 $usuario->guardar();
 

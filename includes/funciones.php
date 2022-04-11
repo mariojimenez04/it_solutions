@@ -50,16 +50,10 @@ function mostrarNotificacion($codigo) {
     return $mensaje;
 }
 
-function validateOrRedirect(string $url) {
-
-    // Verificar el id
-    $id =  $_GET['id'];
-    $id = filter_var($id, FILTER_VALIDATE_INT);
-    if(!$id) {
-        header("Location: ${url}");
+function admin() : void{
+    if(!$_SESSION['admin']){
+        header('Location: /error');
     }
-    
-    return $id;
 }
 
 function redirecciona($valor, $get) {

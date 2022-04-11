@@ -33,13 +33,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/shipments/index">Embarques</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
-                        </li>
-                        
+                        <?php if( $_SESSION['admin']) :?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                     <?php if( $_SESSION['nombre'] ?? null ): ?>
                         <li class="nav-item dropdown me-2">
@@ -62,7 +63,7 @@
         </nav>
     <?php endif; ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?php echo $contenido; ?>   
     </div>
 

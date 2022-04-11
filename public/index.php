@@ -3,7 +3,8 @@
     require_once __DIR__ . '/../includes/app.php';
 
     use Controllers\AdministracionController;
-    use Controllers\ProductController;
+use Controllers\ExcelController;
+use Controllers\ProductController;
     use Controllers\ShipmentsController;
     use Controllers\UsuarioController;
     use MVC\Router;
@@ -75,5 +76,8 @@
 
     $router->get('/error', [AdministracionController::class, 'error']);
 
+    /** Exportar a EXCEL **/
+    //Laptops
+    $router->get('/archive-excel-download', [ExcelController::class, 'downloadLaptop']);
 
     $router->checkRoutes();
