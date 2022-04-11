@@ -132,9 +132,8 @@ class ActiveRecord {
 
     public static function search($columna, $columna2, $valor, $valor2) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE " .  $columna . " LIKE '%" . $valor . "%' AND " . $columna2 . " = '" . $valor2 . "' ";
-        debuguear($query);
         $resultado = self::consultarSQL($query);
-        return array_shift( $resultado ) ;
+        return $resultado;
     }
 
     public static function consulta($columna, $valor) {
