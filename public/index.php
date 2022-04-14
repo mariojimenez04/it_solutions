@@ -1,11 +1,12 @@
 <?php 
 
-    require_once __DIR__ . '/../includes/app.php';
 
+require_once __DIR__ . '/../includes/app.php';
+
+    use Controllers\EmbarquesController;
     use Controllers\AdministracionController;
-use Controllers\ExcelController;
-use Controllers\ProductController;
-    use Controllers\ShipmentsController;
+    use Controllers\ExcelController;
+    use Controllers\ProductController;
     use Controllers\UsuarioController;
     use MVC\Router;
 
@@ -40,25 +41,25 @@ use Controllers\ProductController;
 
     /**   Panel de Registros   **/
     //Shipments
-    $router->get('/admin/shipments/index', [ShipmentsController::class, 'index']);
+    $router->get('/admin/shipments/index', [EmbarquesController::class, 'index']);
 
-    $router->get('/admin/shipments/create', [ShipmentsController::class, 'create']);
-    $router->post('/admin/shipments/create', [ShipmentsController::class, 'create']);
+    $router->get('/admin/shipments/create', [EmbarquesController::class, 'create']);
+    $router->post('/admin/shipments/create', [EmbarquesController::class, 'create']);
 
-    $router->get('/admin/shipments/update', [ShipmentsController::class, 'update']);
-    $router->post('/admin/shipments/update', [ShipmentsController::class, 'update']);
+    $router->get('/admin/shipments/update', [EmbarquesController::class, 'update']);
+    $router->post('/admin/shipments/update', [EmbarquesController::class, 'update']);
 
-    $router->get('/admin/shipments/detalles', [ShipmentsController::class, 'detalles']);
-    $router->post('/admin/shipments/detalles', [ShipmentsController::class, 'detalles']);
+    $router->get('/admin/shipments/detalles', [EmbarquesController::class, 'detalles']);
+    $router->post('/admin/shipments/detalles', [EmbarquesController::class, 'detalles']);
 
-    $router->post('/admin/shipments/delete', [ShipmentsController::class, 'delete']);
+    $router->post('/admin/shipments/delete', [EmbarquesController::class, 'delete']);
 
-    $router->get('/admin/shipments/create-laptop', [ShipmentsController::class, 'createLaptop']);
-    $router->post('/admin/shipments/create-laptop', [ShipmentsController::class, 'createLaptop']);
+    $router->get('/admin/shipments/create-laptop', [EmbarquesController::class, 'createLaptop']);
+    $router->post('/admin/shipments/create-laptop', [EmbarquesController::class, 'createLaptop']);
 
     //Buscadores - Shipments
-    $router->get('/admin/shipments/search/id', [ShipmentsController::class, 'search']);
-    $router->post('/admin/shipments/search/id', [ShipmentsController::class, 'search']);
+    $router->get('/admin/shipments/search/id', [EmbarquesController::class, 'search']);
+    $router->post('/admin/shipments/search/id', [EmbarquesController::class, 'search']);
     
     //Products
     $router->get('/admin/product/index', [ProductController::class, 'index']);
