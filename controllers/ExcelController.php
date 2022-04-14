@@ -46,7 +46,6 @@ use MVC\Router;
                         </tr>
                     </thead>
             ";
-        
             $output .= "
                     <tbody>
             ";
