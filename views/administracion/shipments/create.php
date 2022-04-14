@@ -21,7 +21,7 @@
             <input class="form-control"  type="text" id="descripcion_productos" name="embarque[descripcion_productos]" value="<?php echo s($embarque->descripcion_productos); ?>">
 
         </div>
-        
+
     </div>
 
     <input class="btn btn-success" type="submit" value="Registrar nuevo Embarque">

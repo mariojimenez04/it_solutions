@@ -3,20 +3,23 @@
     namespace Model;
 
     class Embarque extends ActiveRecord {
-        protected static $columnasDB = ['id', 'titulo', 'descripcion_productos', 'usuarioId'];
+        protected static $columnasDB = ['id', 'titulo', 'descripcion_productos', 'usuarioId', 'modificado_el', 'creado_por'];
         protected static $tabla = 'titulo_embarque';
 
         public $id;
         public $titulo;
         public $descripcion_productos;
         public $usuarioId;
+        public $creado_por;
 
         public function __construct($args = [])
         {
             $this->id = $args['id'] ?? null;
             $this->titulo = $args['titulo'] ?? '';
             $this->descripcion_productos = $args['descripcion_productos'] ?? '';
+            $this->modificado_el = date('Y-m-d H:i:s');
             $this->usuarioId = $_SESSION['id'] ?? null;
+            $this->creado_por = $_SESSION['nombre'] ?? null;
         }
 
         public function validar()

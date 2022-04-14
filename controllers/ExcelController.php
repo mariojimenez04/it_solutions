@@ -39,10 +39,8 @@ use MVC\Router;
                             <th>Cantidad</th>
                             <th>Status</th>
                             <th>Observaciones</th>
-                            <th>Entregado</th>
                             <th>Registrado por</th>
                             <th>Registrado el</th>
-                            <th>Accioness</th>
                         </tr>
                     </thead>
             ";

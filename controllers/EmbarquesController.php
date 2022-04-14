@@ -8,7 +8,7 @@
     use Model\Procesadores;
     use MVC\Router;
 
-    class ShipmentsController {
+    class EmbarquesController {
 
         public static function index(Router $router) {
 

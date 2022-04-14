@@ -3,12 +3,15 @@
     namespace Model;
 
     class Laptop extends ActiveRecord {
-        protected static $columnasDB = ['id', 'modelo', 'numero_serie', 'procesador', 'tamano', 'color', 'capacidad_almacenamiento', 'ram', 'cantidad', 'status', 'observaciones', 'entregado', 'tituloId', 'creado_el', 'actualizado_el', 'registrado_por'];
+        protected static $columnasDB = ['id', 'id_identif', 'modelo', 'numero_serie', 'diagnostico_hp', 'acciones_it', 'procesador', 'tamano', 'color', 'capacidad_almacenamiento', 'ram', 'cantidad', 'status', 'observaciones', 'entregado', 'tituloId', 'creado_el', 'actualizado_el', 'registrado_por'];
         protected static $tabla = 'laptop_detalles';
 
         public $id;
+        public $id_identif;
         public $modelo;
         public $numero_serie;
+        public $diagnostico_hp;
+        public $acciones_it;
         public $procesador;
         public $tamano;
         public $color;
@@ -24,8 +27,11 @@
         public function __construct($args = [])
         {
             $this->id = $args['id'] ?? null;
+            $this->id_identif = $args['id_identif'] ?? null;
             $this->modelo = $args['modelo'] ?? '';
             $this->numero_serie = $args['numero_serie'] ?? '';
+            $this->diagnostico_hp = $args['diagnostico_hp'] ?? '';
+            $this->acciones_it = $args['acciones_it'] ?? '';
             $this->procesador = $args['procesador'] ?? '';
             $this->tamano = $args['tamano'] ?? '';
             $this->color = $args['color'] ?? '';
