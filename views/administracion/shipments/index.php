@@ -13,6 +13,10 @@
 
 </div>
 
+<div class="container">
+    <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
+</div>
+
 <table class="table table-hover">
     <h2 class="text-center mb-5">Embarques - Inicio</h2>
     <thead class="bg-success text-center">
@@ -30,8 +34,8 @@
                 <td><?php echo s($embarque->titulo); ?></td>
                 <td><?php echo s($embarque->descripcion_productos); ?></td>
                 <td>
-                    <form action="" method="POST">
-                        <input type="hidden" name="id_eliminar" value="">
+                    <form action="/admin/shipments/delete" method="POST">
+                        <input type="hidden" name="id_eliminar" value="<?php echo s($embarque->id); ?>">
                         <input type="hidden" name="tipo" value="laptop">
                         <input type="submit" class="btn btn-danger mb-2 fw-bold w-100" value="Borrar">
                     </form>

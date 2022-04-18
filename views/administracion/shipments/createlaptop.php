@@ -12,6 +12,13 @@
 
         <div class="col-5 m-3">
 
+            <label for="id_detalle">ID</label>
+            <input class="form-control" type="number" id="id_detalle" name="id_detalle" value="<?php echo s($embarque->id_detalle); ?>">
+
+        </div>
+
+        <div class="col-5 m-3">
+
             <label for="modelo">Modelo</label>
             <input class="form-control"  type="text" id="modelo" name="modelo" value="<?php echo s($embarque->modelo); ?>">
 

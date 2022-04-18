@@ -8,14 +8,24 @@
     use Model\Procesadores;
     use MVC\Router;
 
-    class EmbarquesController {
+    class EmbarquesController extends Controller {
+
+        protected static $names = ['laptop'];
 
         public static function index(Router $router) {
+            $mensaje = $_GET['messaje_report'] ?? null;
+            $alertas = [];
+
+            if( $mensaje === '3513'){
+                $alertas = Laptop::setAlerta('alert-danger', 'Registro eliminado correctamente');
+            }
 
             $embarques = Embarque::all();
 
+            $alertas = Laptop::getAlertas();
             $router->render('administracion/shipments/index',[
-                'embarques' => $embarques
+                'embarques' => $embarques,
+                'alertas' => $alertas,
             ]);
         }
 
@@ -105,6 +115,10 @@
 
             $embarques = Embarque::find($id);
 
+            if( !$embarques) {
+                header('Location: /error');
+            }
+
             $laptops = Laptop::consulta('tituloId', $id);
             
             $router->render('administracion/shipments/detalles', [
@@ -114,8 +128,20 @@
         }
 
         public static function delete() { 
-
+            $tipo = $_POST['tipo'];
+            $id = $_POST['id_eliminar'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
             
+            if( $tipo === 'laptop' && is_numeric($id)) {
+                $laptop = Embarque::find($id);
+                $resultado = $laptop->eliminar();
+
+                if( $resultado ){
+                    header('Location: /admin/shipments/index?messaje_report=3513');
+                }
+            }else {
+                header('Location: /error');
+            }
         }
 
 

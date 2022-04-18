@@ -3,11 +3,11 @@
     namespace Model;
 
     class Laptop extends ActiveRecord {
-        protected static $columnasDB = ['id', 'id_identif', 'modelo', 'numero_serie', 'diagnostico_hp', 'acciones_it', 'procesador', 'tamano', 'color', 'capacidad_almacenamiento', 'ram', 'cantidad', 'status', 'observaciones', 'entregado', 'tituloId', 'creado_el', 'actualizado_el', 'registrado_por'];
+        protected static $columnasDB = ['id', 'id_detalle', 'modelo', 'numero_serie', 'diagnostico_hp', 'acciones_it', 'procesador', 'tamano', 'color', 'capacidad_almacenamiento', 'ram', 'cantidad', 'status', 'observaciones', 'entregado', 'tituloId', 'creado_el', 'actualizado_el', 'registrado_por'];
         protected static $tabla = 'laptop_detalles';
 
         public $id;
-        public $id_identif;
+        public $id_detalle;
         public $modelo;
         public $numero_serie;
         public $diagnostico_hp;
@@ -27,7 +27,7 @@
         public function __construct($args = [])
         {
             $this->id = $args['id'] ?? null;
-            $this->id_identif = $args['id_identif'] ?? null;
+            $this->id_detalle = $args['id_detalle'] ?? '';
             $this->modelo = $args['modelo'] ?? '';
             $this->numero_serie = $args['numero_serie'] ?? '';
             $this->diagnostico_hp = $args['diagnostico_hp'] ?? '';
@@ -57,6 +57,10 @@
 
         public function validar()
         {
+
+            if( !$this->id_detalle ) {
+                self::$alertas['alert-danger'][] = 'El campo Modelo es ID';
+            }
 
             if( !$this->modelo ) {
                 self::$alertas['alert-danger'][] = 'El campo Modelo es obligatorio';
