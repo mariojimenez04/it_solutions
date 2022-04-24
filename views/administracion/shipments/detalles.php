@@ -22,6 +22,8 @@
             <th scope="col">ID</th>
             <th scope="col">Modelo</th>
             <th scope="col">No. Serie</th>
+            <th scope="col">Diagnostico HP</th>
+            <th scope="col">Acciones IT</th>
             <th scope="col">Procesador</th>
             <th scope="col">Tamaño</th>
             <th scope="col">Color</th>
@@ -39,9 +41,11 @@
     <tbody>
         <?php foreach($laptops as $laptop): ?>
             <tr class="text-center">
-                <td scope="row"><?php echo s($laptop->id); ?></td>
+                <td scope="row"><?php echo s($laptop->id_detalle); ?></td>
                 <td><?php echo s($laptop->modelo); ?></td>
                 <td><?php echo s($laptop->numero_serie); ?></td>
+                <td><?php echo s($laptop->diagnostico_hp); ?></td>
+                <td><?php echo s($laptop->acciones_it); ?></td>
                 <td><?php echo s($laptop->procesador); ?></td>
                 <td><?php echo s($laptop->tamano); ?></td>
                 <td><?php echo s($laptop->color); ?></td>
@@ -67,7 +71,7 @@
                     <td><?php echo s($laptop->registrado_por) ?></td>
                     <td><?php echo s($laptop->creado_el) ?></td>
                     <td>
-                        <a class="w-100 btn btn-warning" href="/servicios/actualizar?id=<?php echo $laptop->id; ?>">Actualizar</a>
+                        <a class="w-100 btn btn-warning" href="/admin/shipments/update-laptop?id=<?php echo $laptop->id; ?>">Actualizar</a>
 
                         <form action="/servicios/eliminar" method="POST">
                             <input type="hidden" name="id" value="<?php echo $laptop->id; ?>">

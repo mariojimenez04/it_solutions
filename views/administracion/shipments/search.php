@@ -1,3 +1,14 @@
+<div class="d-flex justify-content-between mt-5">
+    <div>
+        <form action="/admin/shipments/search/id" class="d-flex" method="POST">
+            
+            <input type="hidden" name="tituloId" value="<?php echo s($laptop->tituloId); ?>">
+            <input type="search" name="numero_serie" id="numero_serie" class="form-contol" aria-label="search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+
+        </form>    
+    </div>
+</div>
 <?php 
 if(!$result): ?>
     <h2 class="text-center alert alert-danger">No se encontro ningun resultado</h2>

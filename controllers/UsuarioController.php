@@ -9,6 +9,7 @@
     class UsuarioController {
 
         public static function login(Router $router) {
+            // debuguear($_SESSION);
 
             $alertas = [];
 

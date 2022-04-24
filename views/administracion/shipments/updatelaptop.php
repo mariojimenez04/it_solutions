@@ -1,20 +1,12 @@
-
-    <h2 class="text-center mb-5 mt-5">
-        Crear nuevo registro - Laptops
-    </h2>
+<h1 class="text-center">Actualizar - <?php echo s($embarque->numero_serie) ?></h1>
     
     <div class="container">
         <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
-            <?php if($alert === '3526') : ?>
-                <div class="alert alert-success">
-                    <p class="text-center">Registro creado correctamente</p>
-                </div>
-            <?php endif; ?>
     </div>
     
-    <a href="/admin/shipments/detalles?id=<?php echo s($_GET['id']); ?>" class="btn btn-success">Volver</a>
+    <a href="/admin/shipments/detalles?id=<?php echo s($embarque->tituloId); ?>" class="btn btn-success">Volver</a>
     
-<form class="mb-5 mt-5 container" method="POST">
+<form class="mb-5 mt-5" method="POST">
     <div class="row">
 
         <div class="col-5 m-3">
@@ -58,7 +50,7 @@
             <select class="form-select fs-4" name="procesador" id="procesador">
                 <option selected value="">--Seleccione--</option>
                     <?php foreach( $procesadores as $procesador): ?>
-                        <option 
+                        <option
                             <?php echo s($embarque->procesador) === $procesador->procesador ? 'selected' : ''; ?>
                             value="<?php echo s($procesador->procesador); ?>"
                         >
@@ -110,11 +102,15 @@
             <input class="form-control"  type="text" name="observaciones" id="observaciones" value="<?php echo s($embarque->observaciones); ?>">
 
         </div>
+        <div class="col-5 m-3">
 
-        <input type="hidden" name="tituloId" value="<?php echo s($_GET['id']) ?>">
+            <label for="entregado">Entregado (por default es negativo)</label>
+            <input disabled class="form-control"  type="text" name="entregado" id="entregado">
+
+        </div>
 
     </div>
 
-    <input type="submit" value="Crear registro" class="btn btn-success mt-5">
+    <input type="submit" value="Actualizar registro" class="btn btn-success mt-5">
 
 </form>

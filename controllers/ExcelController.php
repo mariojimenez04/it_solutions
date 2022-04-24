@@ -2,9 +2,8 @@
 
     namespace Controllers;
 
-use Model\Embarque;
-use Model\Laptop;
-use MVC\Router;
+    use Model\Embarque;
+    use Model\Laptop;
 
     class ExcelController {
 
@@ -50,7 +49,7 @@ use MVC\Router;
                 foreach($laptops as $laptop):
             $output .= "        
                     <tr>
-                        <td>" . $laptop->id . "</td>
+                        <td>" . $laptop->id_detalle . "</td>
                         <td>" . $laptop->modelo ."</td>
                         <td>" . $laptop->numero_serie . "</td>
                         <td>" . $laptop->procesador . "</td>
@@ -72,5 +71,9 @@ use MVC\Router;
             ";
 
             echo $output;
+        }
+
+        public static function downloadRoldan() {
+            
         }
     }

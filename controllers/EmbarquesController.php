@@ -13,6 +13,7 @@
         protected static $names = ['laptop'];
 
         public static function index(Router $router) {
+            $actualizado = $_GET['alert'] ?? null;
             $mensaje = $_GET['messaje_report'] ?? null;
             $alertas = [];
 
@@ -26,10 +27,13 @@
             $router->render('administracion/shipments/index',[
                 'embarques' => $embarques,
                 'alertas' => $alertas,
+                'actualizado' => $actualizado
             ]);
         }
 
         public static function createLaptop(Router $router) {
+
+            $alert = $_GET['alerta'] ?? null;
 
             $id = 'id';
 
@@ -50,19 +54,54 @@
 
                 if( empty($alertas) ) {
                     $resultado = $embarque->guardar();
-
                     if($resultado){
-                        header("Location: /admin/shipments/create-laptop?id=" . $_POST['tituloId'] );
+                        header("Location: /admin/shipments/create-laptop?id=" . $_POST['tituloId'] . "&alerta=3526" );
                     }
                 }
             }
-
             $router->render('administracion/shipments/createlaptop',[
                 'procesadores' => $procesadores,
                 'embarque' => $embarque,
                 'generaciones' => $generaciones,
-                'alertas' => $alertas
+                'alertas' => $alertas,
+                'alert' => $alert
             ]);
+        }
+
+        public static function updateLaptop(Router $router) {
+            $alertas = [];
+            $id = 'id';
+            $id = redirecciona($id, 'id');
+
+            $procesadores = Procesadores::all();
+
+            $embarque = Laptop::find($id);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $args = $_POST;
+
+                $embarque->sincronizar($args);
+                
+                $alertas = $embarque->validarUpdate();
+
+                if( empty($alertas)) {
+                    $resultado = $embarque->guardar();
+
+                    if($resultado){
+                        header('Location: /admin/shipments/index?alert=alert_3515_eaaer');
+                    }
+                }
+            }
+
+            $router->render('administracion/shipments/updatelaptop', [
+                'alertas' => $alertas,
+                'embarque' => $embarque,
+                'procesadores' => $procesadores
+            ]);
+        }
+
+        public static function deleteLaptop() {
+            
         }
 
         public static function create(Router $router){
@@ -99,9 +138,12 @@
 
         public static function search(Router $router) {
             $result = $_POST['numero_serie'];
+            $search = $_POST['tituloId'];
 
+            $laptop = Laptop::where('tituloId', $search);
             $laptops = Laptop::search('numero_serie', 'tituloId', $_POST['numero_serie'], $_POST['tituloId']);
             $router->render('administracion/shipments/search',[
+                'laptop' => $laptop,
                 'laptops' => $laptops,
                 'result' => $result
             ]);
@@ -130,17 +172,22 @@
         public static function delete() { 
             $tipo = $_POST['tipo'];
             $id = $_POST['id_eliminar'];
+
             $id = filter_var($id, FILTER_VALIDATE_INT);
             
-            if( $tipo === 'laptop' && is_numeric($id)) {
-                $laptop = Embarque::find($id);
-                $resultado = $laptop->eliminar();
-
-                if( $resultado ){
-                    header('Location: /admin/shipments/index?messaje_report=3513');
-                }
-            }else {
+            if(!$id){
                 header('Location: /error');
+            }else {
+                if( $tipo === 'laptop' && is_numeric($id)) {
+                    $laptop = Embarque::find($id);
+                    $resultado = $laptop->eliminar();
+    
+                    if( $resultado ){
+                        header('Location: /admin/shipments/index?messaje_report=3513');
+                    }
+                }else {
+                    header('Location: /error');
+                }
             }
         }
 

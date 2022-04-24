@@ -57,6 +57,9 @@ require_once __DIR__ . '/../includes/app.php';
     $router->get('/admin/shipments/create-laptop', [EmbarquesController::class, 'createLaptop']);
     $router->post('/admin/shipments/create-laptop', [EmbarquesController::class, 'createLaptop']);
 
+    $router->get('/admin/shipments/update-laptop', [EmbarquesController::class, 'updateLaptop']);
+    $router->post('/admin/shipments/update-laptop', [EmbarquesController::class, 'updateLaptop']);
+
     //Buscadores - Shipments
     $router->get('/admin/shipments/search/id', [EmbarquesController::class, 'search']);
     $router->post('/admin/shipments/search/id', [EmbarquesController::class, 'search']);
