@@ -15,6 +15,15 @@
     </div>
 </div>
 
+<div class="container">
+    <?php if( $actualizado === 'alert_3515_eaaer') : ?>
+        <div class="alert alert-success">
+            <p class="text-center">Registro actualizado correctamente</p>
+        </div>
+    <?php endif; ?>
+</div>
+
+
 <table class="table table-hover">
     <h2 class="text-center mb-5">Embarques - <?php echo s($embarques->titulo); ?></h2>
     <thead class="bg-success text-center">

@@ -123,6 +123,16 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    public static function conteo($columna, $condicion1, $valor1, $condicion2, $valor2) {
+        $query = "SELECT COUNT(" . $columna . ") FROM " . static::$tabla . " WHERE " . $condicion1 . " = '" . $valor1 . "' AND " . $condicion2 . " = '" . $valor2 . "' ";
+
+        debuguear($query);
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE $columna = '${valor}'";
 

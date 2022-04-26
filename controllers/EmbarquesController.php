@@ -13,7 +13,7 @@
         protected static $names = ['laptop'];
 
         public static function index(Router $router) {
-            $actualizado = $_GET['alert'] ?? null;
+            
             $mensaje = $_GET['messaje_report'] ?? null;
             $alertas = [];
 
@@ -27,7 +27,6 @@
             $router->render('administracion/shipments/index',[
                 'embarques' => $embarques,
                 'alertas' => $alertas,
-                'actualizado' => $actualizado
             ]);
         }
 
@@ -69,6 +68,7 @@
         }
 
         public static function updateLaptop(Router $router) {
+
             $alertas = [];
             $id = 'id';
             $id = redirecciona($id, 'id');
@@ -88,7 +88,7 @@
                     $resultado = $embarque->guardar();
 
                     if($resultado){
-                        header('Location: /admin/shipments/index?alert=alert_3515_eaaer');
+                        header('Location: /admin/shipments/detalles?id=' . $_POST['tituloId'] . '&alert=alert_3515_eaaer');
                     }
                 }
             }
@@ -96,7 +96,7 @@
             $router->render('administracion/shipments/updatelaptop', [
                 'alertas' => $alertas,
                 'embarque' => $embarque,
-                'procesadores' => $procesadores
+                'procesadores' => $procesadores,
             ]);
         }
 
@@ -150,6 +150,7 @@
         }
 
         public static function detalles(Router $router) {
+            $actualizado = $_GET['alert'] ?? null;
 
             $id = 'id';
 
@@ -165,7 +166,8 @@
             
             $router->render('administracion/shipments/detalles', [
                 'embarques' => $embarques,
-                'laptops' => $laptops
+                'laptops' => $laptops,
+                'actualizado' => $actualizado,
             ]);
         }
 

@@ -109,6 +109,8 @@
 
         </div>
 
+        <input type="hidden" name="tituloId" value="<?php echo s($embarque->tituloId); ?>">
+
     </div>
 
     <input type="submit" value="Actualizar registro" class="btn btn-success mt-5">

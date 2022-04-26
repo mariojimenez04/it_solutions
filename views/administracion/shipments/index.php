@@ -13,13 +13,6 @@
 
 </div>
 
-<div class="container">
-    <?php if( $actualizado === 'alert_3515_eaaer') : ?>
-        <div class="alert alert-success">
-            <p class="text-center">Registro actualizado correctamente</p>
-        </div>
-    <?php endif; ?>
-</div>
 
 <div class="container">
     <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
