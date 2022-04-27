@@ -150,6 +150,15 @@
         }
 
         public static function detalles(Router $router) {
+            $valor_1 = 0;
+            $valor_2 = 1;
+
+            $consulta = "SELECT COUNT(entregado) FROM laptop_detalles WHERE entregado = '${valor_2}' AND tituloId = '${$_GET['id']}'";
+
+            $entregado = Laptop::SQL($consulta);
+
+            debuguear($entregado);
+
             $actualizado = $_GET['alert'] ?? null;
 
             $id = 'id';

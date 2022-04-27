@@ -126,10 +126,15 @@ class ActiveRecord {
     public static function conteo($columna, $condicion1, $valor1, $condicion2, $valor2) {
         $query = "SELECT COUNT(" . $columna . ") FROM " . static::$tabla . " WHERE " . $condicion1 . " = '" . $valor1 . "' AND " . $condicion2 . " = '" . $valor2 . "' ";
 
-        debuguear($query);
-
         $resultado = self::consultarSQL($query);
 
+        debuguear($resultado);
+
+        return $resultado;
+    }
+
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
