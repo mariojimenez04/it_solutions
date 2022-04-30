@@ -124,13 +124,12 @@ class ActiveRecord {
     }
 
     public static function conteo($columna, $condicion1, $valor1, $condicion2, $valor2) {
-        $query = "SELECT COUNT(" . $columna . ") FROM " . static::$tabla . " WHERE " . $condicion1 . " = '" . $valor1 . "' AND " . $condicion2 . " = '" . $valor2 . "' ";
+        $query = "SELECT COUNT(" . $columna . ") total FROM " . static::$tabla . " WHERE " . $condicion1 . " = '" . $valor1 . "' AND " . $condicion2 . " = '" . $valor2 . "' ";
 
-        $resultado = self::consultarSQL($query);
+        $resultado = self::$db->query($query);
+        $fila = $resultado->fetch_assoc();
 
-        debuguear($resultado);
-
-        return $resultado;
+        return $fila['total'];
     }
 
     public static function SQL($query) {
@@ -155,6 +154,14 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE $columna = '${valor}'";
 
         $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function orderBy($columna, $condicion){
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY " . $columna . " " . $condicion;
+        
+        $resultado = self::consultarSQL($query);
+
         return $resultado;
     }
 

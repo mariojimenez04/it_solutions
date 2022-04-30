@@ -5,7 +5,7 @@
     use Model\Embarque;
     use Model\Generacion;
     use Model\Laptop;
-    use Model\Procesadores;
+    use Model\Procesador;
     use MVC\Router;
 
     class EmbarquesController extends Controller {
@@ -40,7 +40,7 @@
 
             $embarque = new Laptop;
 
-            $procesadores = Procesadores::all();
+            $procesadores = Procesador::all();
 
             $generaciones = Generacion::all();
 
@@ -73,7 +73,7 @@
             $id = 'id';
             $id = redirecciona($id, 'id');
 
-            $procesadores = Procesadores::all();
+            $procesadores = Procesador::all();
 
             $embarque = Laptop::find($id);
 
@@ -101,7 +101,25 @@
         }
 
         public static function deleteLaptop() {
+            $tipo = $_POST['tipo'];
+            $id = $_POST['id_eliminar'];
+
+            $id = filter_var($id, FILTER_VALIDATE_INT);
             
+            if(!$id){
+                header('Location: /error');
+            }else {
+                if( $tipo === 'laptop' && is_numeric($id)) {
+                    $laptop = Laptop::find($id);
+                    $resultado = $laptop->eliminar();
+    
+                    if( $resultado ){
+                        header('Location: /admin/shipments/index?messaje_report=3513');
+                    }
+                }else {
+                    header('Location: /error');
+                }
+            }
         }
 
         public static function create(Router $router){
@@ -153,11 +171,8 @@
             $valor_1 = 0;
             $valor_2 = 1;
 
-            $consulta = "SELECT COUNT(entregado) FROM laptop_detalles WHERE entregado = '${valor_2}' AND tituloId = '${$_GET['id']}'";
-
-            $entregado = Laptop::SQL($consulta);
-
-            debuguear($entregado);
+            $entregado = Laptop::conteo('entregado', 'entregado', $valor_2, 'tituloId', $_GET['id']);
+            $no_entregado = Laptop::conteo('entregado', 'entregado', $valor_1, 'tituloId', $_GET['id']);
 
             $actualizado = $_GET['alert'] ?? null;
 
@@ -177,6 +192,8 @@
                 'embarques' => $embarques,
                 'laptops' => $laptops,
                 'actualizado' => $actualizado,
+                'entregado' => $entregado,
+                'no_entregado' => $no_entregado,
             ]);
         }
 
@@ -189,9 +206,9 @@
             if(!$id){
                 header('Location: /error');
             }else {
-                if( $tipo === 'laptop' && is_numeric($id)) {
-                    $laptop = Embarque::find($id);
-                    $resultado = $laptop->eliminar();
+                if( $tipo === 'embarque' && is_numeric($id)) {
+                    $embarque = Embarque::find($id);
+                    $resultado = $embarque->eliminar();
     
                     if( $resultado ){
                         header('Location: /admin/shipments/index?messaje_report=3513');

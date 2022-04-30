@@ -37,8 +37,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
                             </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/processors/index">Procesadores</a>
                             </li>
                         <?php endif; ?>
                     </ul>
