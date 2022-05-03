@@ -4,12 +4,11 @@
 
     class Procesador extends ActiveRecord {
 
-        protected static $columnasDB = ['id', 'procesador', 'registrado_el', 'modificado_por'];
+        protected static $columnasDB = ['id', 'procesadores', 'ultima_modificacion', 'modificado_por'];
         protected static $tabla = 'procesadores';
 
         public $id;
         public $procesador;
-        public $modificado_por;
 
         public function __construct($args = [])
         {

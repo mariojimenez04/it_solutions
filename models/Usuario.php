@@ -3,7 +3,7 @@
 
     class Usuario extends ActiveRecord {
         protected static $tabla = 'users';
-        protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'token', 'admin', 'confirmado', 'creado_por', 'creado_el', 'actualizado_el'];
+        protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'token', 'admin', 'confirmado', 'ultima_modificacion', 'modificado_por'];
 
         public $id;
         public $nombre;
@@ -14,8 +14,6 @@
         public $admin;
         public $confirmado;
         public $creado_por;
-        public $creado_el;
-        public $actualizado_el;
 
         public function __construct($args = [])
         {
@@ -27,9 +25,8 @@
             $this->token = $args['token'] ?? '';
             $this->admin = $args['admin'] ?? 0;
             $this->confirmado = $args['confirmado'] ?? 0;
-            $this->creado_por = $_SESSION['nombre'] ?? '';
-            $this->creado_el = date('Y-m-d H:i:s');
-            $this->actualizado_el = date('Y-m-d H:i:s');
+            $this->modificado_por = $_SESSION['nombre'] ?? '';
+            $this->ultima_modificacion = date('Y-m-d H:i:s');
         }
 
         //Mensajes de validacion para la creacion de una cuenta
@@ -108,8 +105,6 @@
 
         public function hashPassword() {
             $this->password = password_hash($this->password, PASSWORD_BCRYPT);
-
-            
         }
 
         public function crearToken() {

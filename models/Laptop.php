@@ -3,7 +3,7 @@
     namespace Model;
 
     class Laptop extends ActiveRecord {
-        protected static $columnasDB = ['id', 'id_detalle', 'modelo', 'numero_serie', 'diagnostico_hp', 'acciones_it', 'procesador', 'tamano', 'color', 'capacidad_almacenamiento', 'ram', 'cantidad', 'status', 'observaciones', 'entregado', 'tituloId', 'creado_el', 'actualizado_el', 'registrado_por'];
+        protected static $columnasDB = ['id', 'id_detalle', 'modelo', 'numero_serie', 'diagnostico_hp', 'acciones_it', 'procesador', 'tamano', 'color', 'capacidad_almacenamiento', 'ram', 'cantidad', 'status', 'observaciones', 'entregado', 'tituloId', 'ultima_modificacion', 'modificado_por'];
         protected static $tabla = 'laptop_detalles';
 
         public $id;
