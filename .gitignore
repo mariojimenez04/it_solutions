@@ -1,3 +1,7 @@
-/node_modules
-.index.php
-.registro.php
+src/
+vendor/
+node_modules
+gulpfile.js
+registro.php
+.env
+.DS_Store
