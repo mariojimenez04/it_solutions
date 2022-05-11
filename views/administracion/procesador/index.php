@@ -32,10 +32,10 @@
             <?php foreach($procesadores as $procesador): ?>
                 <tr class="text-center">
                     <td scope="row"><?php echo s($procesador->id); ?></td>
-                    <td><?php echo s($procesador->procesador); ?></td>
+                    <td><?php echo s($procesador->procesadores); ?></td>
                     <?php if($_SESSION['admin']): ?>
                         <td><?php echo s($procesador->modificado_por) ?></td>
-                        <td><?php echo s($procesador->registrado_el) ?></td>
+                        <td><?php echo s($procesador->ultima_modificacion) ?></td>
                         <td>
                             <form action="/admin/processors/delete" method="POST">
                                 <input type="hidden" name="id_eliminar" value="<?php echo $procesador->id; ?>">

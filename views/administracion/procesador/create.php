@@ -13,8 +13,8 @@
         
         <div class="col-5 m-3">
 
-            <label for="procesador">Procesador</label>
-            <input class="form-control"  type="text" id="procesador" name="procesador" value="<?php echo s($procesador->procesador); ?>">
+            <label for="procesadores">Procesador</label>
+            <input class="form-control"  type="text" id="procesadores" name="procesadores" value="<?php echo s($procesador->procesadores); ?>">
 
         </div>
 

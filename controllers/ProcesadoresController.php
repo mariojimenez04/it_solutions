@@ -11,7 +11,7 @@ use MVC\Router;
             $messaje_report = $_GET['messaje_report'] ?? null;
             $actualizado = $_GET['resultado'] ?? null;
 
-            $procesadores = Procesador::orderBy('procesador', 'ASC');
+            $procesadores = Procesador::all();
             
             $router->render('administracion/procesador/index', [
                 'procesadores' => $procesadores,

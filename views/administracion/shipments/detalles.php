@@ -15,6 +15,8 @@
             
         </form>    
     </div>
+
+    
     <div class="d-flex">
         <p class="me-3">Total de laptops por entregar: <span class="fw-bold"><?php echo s($no_entregado) ?></span></p>
         <p class="me-3">Total de laptops entregados: <span class="fw-bold"><?php echo s($entregado) ?></span></p>
@@ -22,6 +24,13 @@
         <a target="_blank" href="/archive-excel-download-roldan?id=<?php echo s($embarques->id); ?>" class="ms-3 btn btn-success">Exportar a excel(Roldan)</a>
     </div>
 </div>
+
+<?php if(!$laptops) : ?>
+
+    <h2 class="text-center mt-5">No hay ningun registro aún</h2>
+
+<?php else : ?>
+    
 
 <div class="container">
     <?php if( $actualizado === 'alert_3515_eaaer') : ?>
@@ -87,8 +96,8 @@
                                 </svg>
                             </td>
                     <?php endif; ?>
-                    <td><?php echo s($laptop->registrado_por) ?></td>
-                    <td><?php echo s($laptop->creado_el) ?></td>
+                    <td><?php echo s($laptop->modificado_por) ?></td>
+                    <td><?php echo s($laptop->ultima_modificacion) ?></td>
                     <td>
                         <a class="w-100 btn btn-warning" href="/admin/shipments/update-laptop?id=<?php echo $laptop->id; ?>">Actualizar</a>
 
@@ -103,3 +112,4 @@
         <?php endforeach; ?> 
     </tbody>
 </table>
+<?php endif; ?>

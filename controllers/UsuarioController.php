@@ -9,7 +9,7 @@
     class UsuarioController {
 
         public static function login(Router $router) {
-            // debuguear($_SESSION);
+            // debuguear($_SERVER);
 
             $alertas = [];
 
@@ -49,6 +49,7 @@
         }
 
         public static function register(Router $router) {
+            isAuth();
             admin();
             $notificacion = $_GET['notification'] ?? null;
 
@@ -102,6 +103,7 @@
         }
 
         public static function passwordIndex(Router $router) {
+            isAuth();
             admin();
             $usuarios = Usuario::all();
 
@@ -111,6 +113,7 @@
         }
 
         public static function passwordEdit(Router $router) {
+            isAuth();
             admin();
             $id = 'id' ?? null;
 
@@ -134,6 +137,7 @@
         }
 
         public static function confirm(Router $router) {
+            isAuth();
             admin();
             $alertas = [];
 

@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../../build/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../build/css/app.css">
+    <link rel="stylesheet" href="build/css/bootstrap.css">
+    <link rel="stylesheet" href="build/css/app.css">
 </head>
 <body>
     <?php 
-        // debuguear($_SERVER);
-        $enlaces = $_SERVER['REQUEST_URI'] === '/' 
+        $enlaces = $_SERVER['REQUEST_URI'] === '/it_solutions/public/' 
     ?>
 
     <?php if( !$enlaces ) :  ?>
@@ -33,19 +32,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/shipments/index">Embarques</a>
                         </li>
-                        <?php if( $_SESSION['admin']) :?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
-                            </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/processors/index">Procesadores</a>
-                            </li>
-                        <?php endif; ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/processors/index">Procesadores</a>
+                        </li>
+                            
                     </ul>
                     <?php if( $_SESSION['nombre'] ?? null ): ?>
                         <li class="nav-item dropdown me-2">
@@ -72,7 +71,7 @@
         <?php echo $contenido; ?>   
     </div>
 
-    <script src="../../../build/js/bootstrap.bundle.js"></script>
+    <script src="build/js/bootstrap.bundle.js"></script>
     
 </body>
 </html>

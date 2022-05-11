@@ -10,8 +10,6 @@
 
     class EmbarquesController extends Controller {
 
-        protected static $names = ['laptop'];
-
         public static function index(Router $router) {
             
             $mensaje = $_GET['messaje_report'] ?? null;
@@ -42,8 +40,6 @@
 
             $procesadores = Procesador::all();
 
-            $generaciones = Generacion::all();
-
             $alertas = [];
 
             if( $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +57,6 @@
             $router->render('administracion/shipments/createlaptop',[
                 'procesadores' => $procesadores,
                 'embarque' => $embarque,
-                'generaciones' => $generaciones,
                 'alertas' => $alertas,
                 'alert' => $alert
             ]);

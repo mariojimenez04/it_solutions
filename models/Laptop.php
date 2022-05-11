@@ -22,7 +22,6 @@
         public $observaciones;
         public $entregado;
         public $tituloId;
-        public $registrado_por;
 
         public function __construct($args = [])
         {
@@ -42,9 +41,9 @@
             $this->observaciones = $args['observaciones'] ?? 'N/A';
             $this->entregado = $args['entregado'] ?? 0;
             $this->tituloId = $args['tituloId'] ?? 1;
-            $this->creado_el = date('Y-m-d H:i:s');
-            $this->actualizado_el = date('Y-m-d H:i:s');
-            $this->registrado_por = $_SESSION['nombre'];
+            date_default_timezone_set("America/Mexico_City");
+            $this->ultima_modificacion = date('Y-m-d H:i:s');
+            $this->modificado_por = $_SESSION['nombre'];
         }
 
         public function nuevoEmbarque() {

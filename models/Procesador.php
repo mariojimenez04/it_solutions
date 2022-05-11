@@ -8,14 +8,14 @@
         protected static $tabla = 'procesadores';
 
         public $id;
-        public $procesador;
+        public $procesadores;
 
         public function __construct($args = [])
         {
             
             $this->id = $args['id'] ?? null;
-            $this->procesador = $args['procesador'] ?? '';
-            $this->registrado_el = date('Y-m-d H:i:s');
+            $this->procesadores = $args['procesadores'] ?? '';
+            $this->ultima_modificacion = date('Y-m-d H:i:s');
             $this->modificado_por = $_SESSION['nombre'];
 
         }
@@ -23,7 +23,7 @@
         public function validar()
         {
             
-            if( !$this->procesador ) {
+            if( !$this->procesadores ) {
                 self::$alertas['alert-danger'][] = 'El campo Procesador es obligatorio';
             }
             

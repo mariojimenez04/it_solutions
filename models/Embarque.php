@@ -16,8 +16,9 @@
             $this->titulo = $args['titulo'] ?? '';
             $this->descripcion_productos = $args['descripcion_productos'] ?? '';
             $this->usuarioId = $_SESSION['id'] ?? null;
+            date_default_timezone_set("America/Mexico_City");
             $this->ultima_modificacion = date('Y-m-d H:i:s');
-            $this->creado_por = $_SESSION['nombre'] ?? null;
+            $this->modificado_por = $_SESSION['nombre'] ?? null;
         }
 
         public function validar()

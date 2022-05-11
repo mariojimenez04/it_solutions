@@ -37,10 +37,11 @@ class Router {
                             '/admin/user/register',
                             '/admin/user/edit',
                             '/admin/confirm/user',
+                            '/admin/processors/index',
                             ];
 
         //Leer lo que el usuario esta buscando
-        $currentURL = $_SERVER["PATH_INFO"] ?? "/";
+        $currentURL = $_SERVER["REQUEST_URI"] === '' ? '/' : $_SERVER["REQUEST_URI"];
         //Saber si el metodo es GET
         $method = $_SERVER['REQUEST_METHOD'];
 
