@@ -17,7 +17,7 @@
 
             $embarque = Embarque::find($_GET['id']);
 
-            header("Content-Type: application/vnd.ms-excel");
+            header("Content-Type: application/vnd.ms-excel; charset=utf-8");
             header("Content-Disposition: attachment; filename=" . $embarque->titulo . $file_name);
             header("Pragma: no-cache");
             header("Expires: 0");
@@ -61,8 +61,8 @@
                         <td>" . $laptop->cantidad . "</td>
                         <td>" . $laptop->status . "</td>
                         <td>" . $laptop->observaciones . "</td>
-                        <td>" . $laptop->registrado_por . "</td>
-                        <td>" . $laptop->creado_el . "</td>
+                        <td>" . $laptop->modificado_por . "</td>
+                        <td>" . $laptop->ultima_modificacion . "</td>
                     </tr>
                 ";
                 endforeach;
@@ -75,7 +75,7 @@
         }
 
         public static function downloadRoldan() {
-            $file_name =  'libros.xlsx';
+            $file_name =  'libros.xls';
             $id = 'id';
 
             $id = redirecciona($id, 'id');
@@ -131,7 +131,7 @@
                         <td>" . "</td>
                         <td>" . "</td>
                         <td>" . date('Y-m-d') . "</td>
-                        <td>" . $laptop->registrado_por . "</td>
+                        <td>" . $laptop->modificado_por . "</td>
                     </tr>
                 ";
                 endforeach;

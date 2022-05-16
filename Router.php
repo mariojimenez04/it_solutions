@@ -41,7 +41,7 @@ class Router {
                             ];
 
         //Leer lo que el usuario esta buscando
-        $currentURL = $_SERVER["REQUEST_URI"] === '' ? '/' : $_SERVER["REQUEST_URI"];
+        $currentURL = $_SERVER["PATH_INFO"] ?? '/';
         //Saber si el metodo es GET
         $method = $_SERVER['REQUEST_METHOD'];
 
