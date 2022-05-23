@@ -51,10 +51,10 @@
                 <option selected value="">--Seleccione--</option>
                     <?php foreach( $procesadores as $procesador): ?>
                         <option
-                            <?php echo s($embarque->procesador) === $procesador->procesador ? 'selected' : ''; ?>
+                            <?php echo s($embarque->procesador) === $procesador->procesadores ? 'selected' : ''; ?>
                             value="<?php echo s($procesador->procesador); ?>"
                         >
-                        <?php echo s($procesador->procesador); ?>
+                        <?php echo s($procesador->procesadores); ?>
                         </option>
                     <?php endforeach; ?>
             </select>
