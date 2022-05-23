@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/build/css/app.css">
 </head>
 <body>
-    <?php 
-        $enlaces = $_SERVER['REQUEST_URI'] === '/it_solutions/public/' 
+    <?php
+        $enlaces = $_SERVER['REQUEST_URI'] === '/' 
     ?>
 
     <?php if( !$enlaces ) :  ?>
