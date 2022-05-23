@@ -52,7 +52,7 @@
                     <?php foreach( $procesadores as $procesador): ?>
                         <option
                             <?php echo s($embarque->procesador) === $procesador->procesadores ? 'selected' : ''; ?>
-                            value="<?php echo s($procesador->procesador); ?>"
+                            value="<?php echo s($procesador->procesadores); ?>"
                         >
                         <?php echo s($procesador->procesadores); ?>
                         </option>
@@ -100,12 +100,6 @@
 
             <label for="observaciones">Observaciones</label>
             <input class="form-control"  type="text" name="observaciones" id="observaciones" value="<?php echo s($embarque->observaciones); ?>">
-
-        </div>
-        <div class="col-5 m-3">
-
-            <label for="entregado">Entregado (por default es negativo)</label>
-            <input disabled class="form-control"  type="text" name="entregado" id="entregado">
 
         </div>
 
