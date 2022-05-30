@@ -32,15 +32,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/shipments/index">Embarques</a>
                         </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
-                        </li>
-
+                        <?php if($_SESSION['admin'] === '1'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/processors/index">Procesadores</a>
                         </li>

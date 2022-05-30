@@ -35,11 +35,13 @@
                 <td><?php echo s($embarque->titulo); ?></td>
                 <td><?php echo s($embarque->descripcion_productos); ?></td>
                 <td>
+                <?php if($_SESSION['admin'] === '1'): ?>
                     <form action="/admin/shipments/delete" method="POST">
                         <input type="hidden" name="id_eliminar" value="<?php echo s($embarque->id); ?>">
                         <input type="hidden" name="tipo" value="embarque">
                         <input type="submit" class="btn btn-danger mb-2 fw-bold w-100" value="Borrar">
                     </form>
+                <?php endif; ?>
                         <a href="/admin/shipments/detalles?id=<?php echo $embarque->id; ?>" class="btn btn-orange mb-2 text-white fw-bold w-100">Ver Embarque - detalles</a>
                 </td>
             </tr>

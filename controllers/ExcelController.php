@@ -38,12 +38,15 @@
                             <th>RAM</th>
                             <th>Cantidad</th>
                             <th>Status</th>
-                            <th>Observaciones</th>
+                            <th>Observaciones</th>";
+                            if($_SESSION['admin'] === '1'):
+            $output .= "
                             <th>Registrado por</th>
                             <th>Registrado el</th>
                         </tr>
                     </thead>
             ";
+                            endif;
             $output .= "
                     <tbody>
             ";
@@ -60,11 +63,14 @@
                         <td>" . $laptop->ram . "</td>
                         <td>" . $laptop->cantidad . "</td>
                         <td>" . $laptop->status . "</td>
-                        <td>" . $laptop->observaciones . "</td>
+                        <td>" . $laptop->observaciones . "</td>";
+                        if($_SESSION['admin'] === '1'):
+            $output .= "
                         <td>" . $laptop->modificado_por . "</td>
                         <td>" . $laptop->ultima_modificacion . "</td>
                     </tr>
                 ";
+                        endif;
                 endforeach;
             $output .= "
                     </tbody>

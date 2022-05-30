@@ -21,7 +21,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Procesador</th>
-                <?php if($_SESSION['admin']): ?>
+                <?php if($_SESSION['admin'] === '1'): ?>
                     <th scope="col">Registrado por</th>
                     <th scope="col">Registrado el</th>
                     <th scope="col">Accioness</th>
@@ -33,7 +33,7 @@
                 <tr class="text-center">
                     <td scope="row"><?php echo s($procesador->id); ?></td>
                     <td><?php echo s($procesador->procesadores); ?></td>
-                    <?php if($_SESSION['admin']): ?>
+                    <?php if($_SESSION['admin'] === '1'): ?>
                         <td><?php echo s($procesador->modificado_por) ?></td>
                         <td><?php echo s($procesador->ultima_modificacion) ?></td>
                         <td>

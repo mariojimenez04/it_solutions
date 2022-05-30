@@ -82,7 +82,7 @@
                 <td><?php echo s($laptop->cantidad); ?></td>
                 <td><?php echo s($laptop->status); ?></td>
                 <td><?php echo s($laptop->observaciones); ?></td>
-                <?php if($_SESSION['admin']): ?>
+                <?php if($_SESSION['admin'] === '1'): ?>
                     <?php if($laptop->entregado === '0'): ?>
                         <td>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
